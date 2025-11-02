@@ -142,15 +142,14 @@ function Dashboard() {
           <Col xs={12} md={8}>
             <h2 className="fw-bold mb-1">Dashboard</h2>
             <p className="text-muted mb-0">
-              Manage your data <Badge bg="primary" className="px-3 py-2">{items.length} Items</Badge>
+              Manage your data{" "}
+              <Badge bg="primary" className="px-3 py-2">
+                {items.length} Items
+              </Badge>
             </p>
           </Col>
           <Col xs={12} md={4} className="d-flex justify-content-md-end">
-            <Button 
-              variant="primary" 
-              onClick={handleAdd}
-              className="d-flex align-items-center justify-content-center px-4 py-2"
-            >
+            <Button variant="primary" onClick={handleAdd} className="d-flex align-items-center justify-content-center px-4 py-2">
               <i className="bi bi-plus-circle me-2"></i> Add New Item
             </Button>
           </Col>
@@ -180,17 +179,13 @@ function Dashboard() {
         ) : items.length === 0 ? (
           <Card className="border-0 shadow-sm text-center p-5">
             <div className="d-flex justify-content-center mb-4">
-              <div className="rounded-circle bg-light d-flex align-items-center justify-content-center" style={{ width: '80px', height: '80px' }}>
-                <i className="bi bi-inbox" style={{ fontSize: '40px', color: '#6c757d' }}></i>
+              <div className="rounded-circle bg-light d-flex align-items-center justify-content-center" style={{ width: "80px", height: "80px" }}>
+                <i className="bi bi-inbox" style={{ fontSize: "40px", color: "#6c757d" }}></i>
               </div>
             </div>
             <h4 className="text-muted">No Data Available</h4>
             <p className="text-muted mb-4">Click the "Add New Item" button to create your first item</p>
-            <Button 
-              variant="outline-primary" 
-              onClick={handleAdd}
-              className="mx-auto d-flex align-items-center justify-content-center px-4"
-            >
+            <Button variant="outline-primary" onClick={handleAdd} className="mx-auto d-flex align-items-center justify-content-center px-4">
               <i className="bi bi-plus-circle me-2"></i> Create First Item
             </Button>
           </Card>
@@ -201,10 +196,14 @@ function Dashboard() {
                 <Table className="mb-0" striped hover>
                   <thead className="table-light">
                     <tr>
-                      <th className="border-top-0" style={{ width: "60px" }}>#</th>
+                      <th className="border-top-0" style={{ width: "60px" }}>
+                        #
+                      </th>
                       <th className="border-top-0">Title</th>
                       <th className="border-top-0">Description</th>
-                      <th className="border-top-0" style={{ width: "200px" }}>Actions</th>
+                      <th className="border-top-0" style={{ width: "200px" }}>
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -217,20 +216,10 @@ function Dashboard() {
                         <td className="align-middle">{item.description}</td>
                         <td className="align-middle">
                           <div className="d-flex gap-2">
-                            <Button 
-                              size="sm" 
-                              variant="outline-warning" 
-                              onClick={() => handleEdit(item)}
-                              className="d-flex align-items-center"
-                            >
+                            <Button size="sm" variant="outline-warning" onClick={() => handleEdit(item)} className="d-flex align-items-center">
                               <i className="bi bi-pencil me-1"></i> Edit
                             </Button>
-                            <Button 
-                              size="sm" 
-                              variant="outline-danger" 
-                              onClick={() => handleDelete(item.id, item.title)}
-                              className="d-flex align-items-center"
-                            >
+                            <Button size="sm" variant="outline-danger" onClick={() => handleDelete(item.id, item.title)} className="d-flex align-items-center">
                               <i className="bi bi-trash me-1"></i> Delete
                             </Button>
                           </div>
@@ -248,7 +237,15 @@ function Dashboard() {
         <Modal show={show} onHide={handleClose} centered size="lg">
           <Modal.Header closeButton className="border-bottom-0">
             <Modal.Title className="fw-bold">
-              {editId ? <><i className="bi bi-pencil me-2"></i> Edit Item</> : <><i className="bi bi-plus-circle me-2"></i> Add New Item</>}
+              {editId ? (
+                <>
+                  <i className="bi bi-pencil me-2"></i> Edit Item
+                </>
+              ) : (
+                <>
+                  <i className="bi bi-plus-circle me-2"></i> Add New Item
+                </>
+              )}
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -257,15 +254,7 @@ function Dashboard() {
                 <Form.Label className="fw-semibold">
                   Title <span className="text-danger">*</span>
                 </Form.Label>
-                <Form.Control 
-                  name="title" 
-                  placeholder="Enter title" 
-                  value={form.title} 
-                  onChange={handleChange} 
-                  isInvalid={!!errors.title} 
-                  disabled={loading} 
-                  className="rounded-2 py-2"
-                />
+                <Form.Control name="title" placeholder="Enter title" value={form.title} onChange={handleChange} isInvalid={!!errors.title} disabled={loading} className="rounded-2 py-2" />
                 <Form.Control.Feedback type="invalid">{errors.title}</Form.Control.Feedback>
               </Form.Group>
 
@@ -273,17 +262,7 @@ function Dashboard() {
                 <Form.Label className="fw-semibold">
                   Description <span className="text-danger">*</span>
                 </Form.Label>
-                <Form.Control 
-                  as="textarea" 
-                  rows={5} 
-                  name="description" 
-                  placeholder="Enter description" 
-                  value={form.description} 
-                  onChange={handleChange} 
-                  isInvalid={!!errors.description} 
-                  disabled={loading} 
-                  className="rounded-2 py-2"
-                />
+                <Form.Control as="textarea" rows={5} name="description" placeholder="Enter description" value={form.description} onChange={handleChange} isInvalid={!!errors.description} disabled={loading} className="rounded-2 py-2" />
                 <Form.Control.Feedback type="invalid">{errors.description}</Form.Control.Feedback>
               </Form.Group>
             </Form>
@@ -292,12 +271,7 @@ function Dashboard() {
             <Button variant="outline-secondary" onClick={handleClose} disabled={loading} className="px-4">
               Cancel
             </Button>
-            <Button 
-              variant="primary" 
-              onClick={handleSave} 
-              disabled={loading}
-              className="px-4 d-flex align-items-center"
-            >
+            <Button variant="primary" onClick={handleSave} disabled={loading} className="px-4 d-flex align-items-center">
               {loading ? (
                 <>
                   <Spinner animation="border" size="sm" className="me-2" />
