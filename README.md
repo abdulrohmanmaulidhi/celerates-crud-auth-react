@@ -2,6 +2,14 @@
 
 A full-stack React application with user authentication (login/register) and CRUD (Create, Read, Update, Delete) operations for managing data. Built with modern React patterns and best practices.
 
+---
+
+## Backend Repository
+
+[Backend Repository](https://github.com/abdulrohmanmaulidhi/celerates-crud-auth-express)
+
+---
+
 ## 🚀 Features
 
 - **User Authentication**: Secure login and registration system
@@ -50,19 +58,11 @@ Before you begin, ensure you have the following installed:
 
 ## 🔧 Configuration
 
-### API Configuration
-
-The application communicates with a backend API. Update the API endpoints in the `src/api/api.js` file to match your backend server:
-
-```javascript
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:3001/api";
-```
-
 ### Environment Variables
 
-| Variable          | Description     | Default                   |
-| ----------------- | --------------- | ------------------------- |
-| REACT_APP_API_URL | Backend API URL | http://localhost:3001/api |
+| Variable | Description     | Default                   |
+| -------- | --------------- | ------------------------- |
+| API_URL  | Backend API URL | http://localhost:5000/api |
 
 ## ▶️ Running the Application
 
